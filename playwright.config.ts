@@ -12,7 +12,7 @@ const config: PlaywrightTestConfig = {
     ],
                  
     timeout: 90000,
-    retries: 1,
+    retries: 0,
     workers: 6,
 
     projects: [
@@ -27,6 +27,7 @@ const config: PlaywrightTestConfig = {
             ignoreHTTPSErrors: true,
             // Testing options
             screenshot: 'on',
+            slowMo:100,
             video: 'retain-on-failure',
           },
         },
@@ -46,18 +47,18 @@ const config: PlaywrightTestConfig = {
         //   name: 'Mobile Safari',
         //   use: devices['iPhone 12'],
         // },
-        {
-          name: 'Desktop Firefox',
-          use: {
-            browserName: 'firefox',
-            viewport: { width: 1280, height: 1024 },
-            headless: false,
-            ignoreHTTPSErrors: true,
-            // Testing options
-            video: 'retain-on-failure',
-            screenshot: 'on',
-          }
-        },
+        // {
+        //   name: 'Desktop Firefox',
+        //   use: {
+        //     browserName: 'firefox',
+        //     viewport: { width: 1280, height: 1024 },
+        //     headless: false,
+        //     ignoreHTTPSErrors: true,
+        //     // Testing options
+        //     video: 'retain-on-failure',
+        //     screenshot: 'on',
+        //   }
+        // },
       ],
 
 };
