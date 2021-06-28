@@ -28,7 +28,7 @@ const config: PlaywrightTestConfig = {
             // Testing options
             screenshot: 'on',
             slowMo:100,
-            video: 'retain-on-failure',
+            video: 'retain-on-failure', //'on'
           },
         },
         // {
@@ -38,7 +38,6 @@ const config: PlaywrightTestConfig = {
         //     viewport: { width: 1200, height: 750 },
         //   }
         // },
-        // Test against mobile viewports.
         // {
         //   name: 'Mobile Chrome',
         //   use: devices['Pixel 5'],
