@@ -4,6 +4,15 @@
 ```
 https://playwright.dev/docs/test-intro/
 ```
+**Tech Assessment Summary**
+```
+ I've used Page Object Model Framework using Playwright automation tool. I chose this framework as it fits my free time at the moment. Though I know BDD, creating a feature file takes a lot of time and pressure on me. I also chose Playwright tool because this is the current automation tool that I've been playing around and did a Proof of Concept in my company to replace our current automation tool. Please bear with me regarding my scripting skills, I've known a lot of programming languages, e.g. ruby, java,javascript,typescript, vbscript, perl,python but I'm not a master of one. I've used typescript and still learning from it.
+
+Most of the scenarios I've covered are end to end (mostly starts from registration of users). Every car vote and selection is randomly selected and not hard coded, though limited only to page one. Random String generator is also created to have dynamic user though passwords are all the same with "Qwerty.101". New instance of chromium is created every test scenario run. Screenshots are also captured on each of the tests. Video recording is also available on failure, can be configured as well when pass (instructions below). Retries and headless run can also be configured below.
+
+I came up with total of 11 scenarios, 9 are passing and 2 are known bugs and my scripts will report it as failure with screenshots and video. Videos can be watched using chrome browser.
+
+```
 
 **Installation**
 
