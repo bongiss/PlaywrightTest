@@ -16,7 +16,7 @@ npm i -D @playwright/test
 1. Kindly install node js (can be downloaded here : https://nodejs.org/en/download/)
 2. git clone my repo
 3. inside my repo please run `npm install playwright`.
-4. `npm i -D @playwright/test`
+4. run `npm i -D @playwright/test` too.
 5. to execute, `npx playwright test`
 6. test screenshots are available at `test-results` folder. each scenario will have its own folder.
 ```
