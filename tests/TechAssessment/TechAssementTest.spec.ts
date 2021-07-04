@@ -102,7 +102,7 @@ test.describe("Buggy Cars E2E:", () => {
         expect(await mainPage.verifyAuthorColumn()).not.toEqual('');
     });
 
-    test("Sort by rank", async ({page}) => {
+    test("Sort by rank desc", async ({page}) => {
         await mainPage.clickOverallRatingSection();
         await mainPage.sortbyRank();
         expect(await mainPage.verifyRankColumn()).toBe("10"); 
