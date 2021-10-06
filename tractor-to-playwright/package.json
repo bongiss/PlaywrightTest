@@ -1,0 +1,10 @@
+{
+    "name": "@trademe/tractor-to-playwright",
+    "version": "1.0.0",
+    "description": "Tractor to Playwright migration helpers",
+    "private": true,
+    "main": "src/index.ts",
+    "typings": "src/index.ts",
+    "author": "Craig Spence",
+    "license": "MIT"
+  }
