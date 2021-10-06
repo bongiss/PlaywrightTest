@@ -33,4 +33,7 @@ test.describe('Technical Assessment Automation', () => {
         expect(await contactPage.feedbackSuccessMessageText()).toContain('we appreciate your feedback.');
 
     });
+    test('Test Case 2', async ({ page }) => {
+        
+    });
 });

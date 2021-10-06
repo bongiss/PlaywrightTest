@@ -1,5 +1,5 @@
 import { Page } from '@playwright/test';
-import { createSelector, isPresent, Selector } from '../Helper-package';
+import { createSelector, isPresent, Selector } from '../helper-package/src';
 
 export class ContactPage {
     public _submit = this._select('a:has-text("Submit")');
