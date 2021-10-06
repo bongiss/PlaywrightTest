@@ -27,8 +27,8 @@ const config: PlaywrightTestConfig = {
             ignoreHTTPSErrors: true,
             // Testing options
             screenshot: 'on',
-            slowMo:100,
-            video: 'retain-on-failure', //'on'
+            // slowMo:100,
+            video: 'on', //'retain-on-failure', //'on'
           },
         },
         // {
