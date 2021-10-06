@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "babel": "^6.23.0",
-    "playwright": "^1.12.1",
+    "playwright": "^1.12.3",
     "ts-mixer": "^5.4.1"
   },
   "scripts": {
@@ -19,6 +19,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+<<<<<<< HEAD
     "@playwright/test": "^1.15.2"
+=======
+    "@playwright/test": "^1.12.3"
+>>>>>>> 6531e178ab3a5a101020d45906bc6b245b27cbcd
   }
 }
