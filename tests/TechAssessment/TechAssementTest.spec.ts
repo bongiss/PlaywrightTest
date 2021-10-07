@@ -1,5 +1,7 @@
 import { test, expect } from "@playwright/test";
+import { CheckoutPage } from "../../page-objects/CheckoutPage.page";
 import { ContactPage } from "../../page-objects/ContactPAge.page";
+import { ShopPage } from "../../page-objects/ShopPage.page";
 import { TopNav } from "../../page-objects/TopNav.page";
 import { UrlActions } from "../../test-helpers/UrlAction.page";
 
@@ -54,4 +56,45 @@ test.describe.parallel('Technical Assessment Automation', () => {
             expect(await contactPage.feedbackSuccessMessageText()).toContain('we appreciate your feedback.');
         });
     }
+    test('Test Case 3', async ({ page }) => {
+        const topNav = new TopNav(page);
+        const shopPage = new ShopPage(page);
+        const checkoutPage = new CheckoutPage(page);
+
+        await topNav.clickShop();
+        await shopPage.clickBuyButton('Funny Cow');
+        await shopPage.clickBuyButton('Funny Cow');
+        await shopPage.clickBuyButton('Fluffy Bunny');
+        await topNav.clickCart();
+        expect(await checkoutPage.verifyItemInCart('Funny Cow')).toEqual(true);
+        expect(await checkoutPage.verifyItemInCart('Fluffy Bunny')).toEqual(true);
+    });
+    test('Test Case 4', async ({ page }) => {
+        const topNav = new TopNav(page);
+        const shopPage = new ShopPage(page);
+        const checkoutPage = new CheckoutPage(page);
+
+        await topNav.clickShop();
+        await shopPage.clickBuyButton('Stuffed Frog');
+        await shopPage.clickBuyButton('Stuffed Frog');
+        await shopPage.clickBuyButton('Fluffy Bunny');
+        await shopPage.clickBuyButton('Fluffy Bunny');
+        await shopPage.clickBuyButton('Fluffy Bunny');
+        await shopPage.clickBuyButton('Fluffy Bunny');
+        await shopPage.clickBuyButton('Fluffy Bunny');
+        await shopPage.clickBuyButton('Valentine Bear');
+        await shopPage.clickBuyButton('Valentine Bear');
+        await shopPage.clickBuyButton('Valentine Bear');
+        await topNav.clickCart();
+        expect(await checkoutPage.verifyItemInCart('Stuffed Frog')).toEqual(true);
+        expect(await checkoutPage.verifyItemInCart('Fluffy Bunny')).toEqual(true);
+        expect(await checkoutPage.verifyItemInCart('Valentine Bear')).toEqual(true);
+
+        expect(await checkoutPage.verifyItemPrice('Stuffed Frog','10.99')).toEqual(true);
+        expect(await checkoutPage.verifyItemPrice('Fluffy Bunny','9.99')).toEqual(true);
+        expect(await checkoutPage.verifyItemPrice('Valentine Bear','14.99')).toEqual(true);
+
+        expect(await checkoutPage.verifyItemsSubtotal()).toEqual(true);
+        expect(await checkoutPage.verifyTotalAmount()).toEqual(true);
+    });
 });

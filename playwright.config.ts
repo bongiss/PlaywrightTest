@@ -4,7 +4,7 @@ import { PlaywrightTestConfig, devices } from '@playwright/test';
 const config: PlaywrightTestConfig = {
 
   timeout: 90000,
-  retries: 1,
+  retries: 0,
   workers: process.env.CI ? 2 : undefined,
 
   testDir: "./tests",

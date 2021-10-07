@@ -4,6 +4,7 @@ import { createSelector, Selector } from '../helper-package/src';
 export class TopNav {
     public _contact = this._select('a[href="#/contact"]');
     public _shop = this._select('a[href="#/shop"]');
+    public _cart = this._select('a[href="#/cart"]');
 
     constructor (private _page: Page, private _select: Selector = createSelector()) {}
 
@@ -12,6 +13,10 @@ export class TopNav {
     }
 
     public async clickShop (): Promise<void> {
-        await this._page.click(this._contact);
+        await this._page.click(this._shop);
+    }
+
+    public async clickCart (): Promise<void> {
+        await this._page.click(this._cart);
     }
 }
