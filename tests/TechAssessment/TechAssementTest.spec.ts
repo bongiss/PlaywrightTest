@@ -3,13 +3,17 @@ import { ContactPage } from "../../page-objects/ContactPAge.page";
 import { TopNav } from "../../page-objects/TopNav.page";
 import { UrlActions } from "../../test-helpers/UrlAction.page";
 
-test.describe('Technical Assessment Automation', () => {
-    test('Test Case 1', async ({ page }) => {
+test.describe.parallel('Technical Assessment Automation', () => {
+    
+    test.beforeEach(async ({ page }) => {
         const urlActions = new UrlActions(page);
+        await urlActions.goToUrl('http://jupiter.cloud.planittesting.com/');
+      });
+
+    test('Test Case 1', async ({ page }) => {
         const topNav = new TopNav(page);
         const contactPage = new ContactPage(page);
 
-        await urlActions.goToUrl('http://jupiter.cloud.planittesting.com/');
         await topNav.clickContact();
         await contactPage.clickSubmit();
         
@@ -33,7 +37,21 @@ test.describe('Technical Assessment Automation', () => {
         expect(await contactPage.feedbackSuccessMessageText()).toContain('we appreciate your feedback.');
 
     });
-    test('Test Case 2', async ({ page }) => {
-        
-    });
+    for (let runs of [1,2,3,4,5]){
+        test(`Test Case 2 run: ${runs}`, async ({ page }) => {
+            const topNav = new TopNav(page);
+            const contactPage = new ContactPage(page);
+    
+            await topNav.clickContact();
+            await contactPage.enterForname('John');
+            await contactPage.enterSurname('Example');
+            await contactPage.enterEmail('John.Example@planit.net.au');
+            await contactPage.enterTelephone('02112345678');
+            await contactPage.enterMessage('Hello world');
+            await contactPage.clickSubmit();
+    
+            expect(await contactPage.feedbackSuccessMessageDisplayed()).toEqual(true);
+            expect(await contactPage.feedbackSuccessMessageText()).toContain('we appreciate your feedback.');
+        });
+    }
 });

@@ -3,34 +3,34 @@ import { PlaywrightTestConfig, devices } from '@playwright/test';
 
 const config: PlaywrightTestConfig = {
 
-    testDir: "tests",
+  timeout: 90000,
+  retries: 1,
+  workers: process.env.CI ? 2 : undefined,
 
-    reporter: [
-        ['list'],
-        ['junit', {outputFile: 'report.xml'}],
-        ['json', {outputFile: 'report.json'}]
-    ],
-                 
-    timeout: 90000,
-    retries: 1,
-    workers: 6,
+  testDir: "./tests",
 
-    projects: [
-        {
-          name: 'Chrome Stable',
-          use: {
-            browserName: 'chromium',
-            // Launch options
-            headless: false,
-            // Context options
-            viewport: { width: 1280, height: 1024 },
-            ignoreHTTPSErrors: true,
-            // Testing options
-            screenshot: 'on',
-            // slowMo:100,
-            video: 'on', //'retain-on-failure', //'on'
-          },
-        },
+  reporter: [
+    ['list'],
+    ['junit', {outputFile: 'report.xml'}],
+    ['json', {outputFile: 'report.json'}]
+  ],             
+    
+  projects: [
+    {
+      name: 'Chrome Stable',
+      use: {
+      browserName: 'chromium',
+      // Launch options
+      headless: false,
+      // Context options
+      viewport: { width: 1280, height: 1024 },
+      ignoreHTTPSErrors: true,
+      // Testing options
+      screenshot: 'on',
+      // slowMo:100,
+      video: 'on', //'retain-on-failure', //'on'
+      },
+    },
         // {
         //   name: 'Desktop Safari',
         //   use: {

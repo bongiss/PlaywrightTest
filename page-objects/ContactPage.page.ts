@@ -69,6 +69,7 @@ export class ContactPage {
     }
 
     public async feedbackSuccessMessageDisplayed (): Promise<boolean> {
+        await this._page.waitForSelector(this._feedbackSentSuccess);
         return await isPresent(this._page, this._feedbackSentSuccess);
     }
 
