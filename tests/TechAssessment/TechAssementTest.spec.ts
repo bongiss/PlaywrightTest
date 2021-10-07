@@ -5,7 +5,7 @@ import { ShopPage } from "../../page-objects/ShopPage.page";
 import { TopNav } from "../../page-objects/TopNav.page";
 import { UrlActions } from "../../test-helpers/UrlAction.page";
 
-test.describe.parallel('Technical Assessment Automation', () => {
+test.describe('Technical Assessment Automation', () => {
     
     test.beforeEach(async ({ page }) => {
         const urlActions = new UrlActions(page);
