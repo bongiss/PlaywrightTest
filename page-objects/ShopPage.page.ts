@@ -3,8 +3,8 @@ import { createSelector, Selector } from '../helper-package/src';
 
 export class ShopPage {
     
-    public _buyButton = this._select('a.btn.btn-success');
-    public _productLabel = this._select('.product-title.ng-binding');
+    private _buyButton = this._select('a.btn.btn-success');
+    private _productLabel = this._select('.product-title.ng-binding');
 
     constructor (private _page: Page, private _select: Selector = createSelector()) {}
 

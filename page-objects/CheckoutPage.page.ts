@@ -3,11 +3,11 @@ import { createSelector, Selector } from '../helper-package/src';
 
 export class CheckoutPage {
     
-    public _cartItems = this._select('.cart-item.ng-scope td:nth-child(1)');
-    public _cartItemsPrice = this._select('.cart-item.ng-scope td:nth-child(2)');
-    public _cartItemsQuantity = this._select('input[name="quantity"]');
-    public _cartItemsSubTotal = this._select('.cart-item.ng-scope td:nth-child(4)');
-    public _cartTotalAmount = this._select('.total.ng-binding');
+    private _cartItems = this._select('.cart-item.ng-scope td:nth-child(1)');
+    private _cartItemsPrice = this._select('.cart-item.ng-scope td:nth-child(2)');
+    private _cartItemsQuantity = this._select('input[name="quantity"]');
+    private _cartItemsSubTotal = this._select('.cart-item.ng-scope td:nth-child(4)');
+    private _cartTotalAmount = this._select('.total.ng-binding');
     
     constructor (private _page: Page, private _select: Selector = createSelector()) {}
 

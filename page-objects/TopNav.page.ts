@@ -2,9 +2,9 @@ import { Page } from '@playwright/test';
 import { createSelector, Selector } from '../helper-package/src';
 
 export class TopNav {
-    public _contact = this._select('a[href="#/contact"]');
-    public _shop = this._select('a[href="#/shop"]');
-    public _cart = this._select('a[href="#/cart"]');
+    private _contact = this._select('a[href="#/contact"]');
+    private _shop = this._select('a[href="#/shop"]');
+    private _cart = this._select('a[href="#/cart"]');
 
     constructor (private _page: Page, private _select: Selector = createSelector()) {}
 

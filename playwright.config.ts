@@ -4,7 +4,7 @@ import { PlaywrightTestConfig, devices } from '@playwright/test';
 const config: PlaywrightTestConfig = {
 
   timeout: 90000,
-  retries: 0,
+  retries: 1,
   workers: process.env.CI ? 2 : undefined,
 
   testDir: "./tests",
@@ -20,14 +20,10 @@ const config: PlaywrightTestConfig = {
       name: 'Chrome Stable',
       use: {
       browserName: 'chromium',
-      // Launch options
       headless: false,
-      // Context options
       viewport: { width: 1280, height: 1024 },
       ignoreHTTPSErrors: true,
-      // Testing options
       screenshot: 'on',
-      // slowMo:100,
       video: 'on', //'retain-on-failure', //'on'
       },
     },

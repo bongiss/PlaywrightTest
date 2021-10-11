@@ -2,17 +2,17 @@ import { Page } from '@playwright/test';
 import { createSelector, isPresent, Selector } from '../helper-package/src';
 
 export class ContactPage {
-    public _submit = this._select('a:has-text("Submit")');
-    public _headerMessage = this._select('#header-message');
-    public _forenameErr = this._select('#forename-err');
-    public _emailErr = this._select('#email-err');
-    public _inputMessageErr = this._select('#message-err');
-    public _foreNameInputTxt = this._select('#forename');
-    public _surnameInputTxt = this._select('#surname');
-    public _emailInputTxt = this._select('#email');
-    public _telephoneInputTxt = this._select('#telephone');
-    public _messageInputTxt = this._select('#message');
-    public _feedbackSentSuccess = this._select('.alert.alert-success');
+    private _submit = this._select('a:has-text("Submit")');
+    private _headerMessage = this._select('#header-message');
+    private _forenameErr = this._select('#forename-err');
+    private _emailErr = this._select('#email-err');
+    private _inputMessageErr = this._select('#message-err');
+    private _foreNameInputTxt = this._select('#forename');
+    private _surnameInputTxt = this._select('#surname');
+    private _emailInputTxt = this._select('#email');
+    private _telephoneInputTxt = this._select('#telephone');
+    private _messageInputTxt = this._select('#message');
+    private _feedbackSentSuccess = this._select('.alert.alert-success');
 
     constructor (private _page: Page, private _select: Selector = createSelector()) {}
 
