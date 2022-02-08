@@ -20,7 +20,7 @@ const config: PlaywrightTestConfig = {
       name: 'Chrome Stable',
       use: {
       browserName: 'chromium',
-      headless: false,
+      headless: true,
       viewport: { width: 1280, height: 1024 },
       ignoreHTTPSErrors: true,
       screenshot: 'on',
