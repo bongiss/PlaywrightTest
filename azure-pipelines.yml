@@ -18,5 +18,8 @@ steps:
 - script: |
     npm i -D @playwright/test
     npx playwright install
-    npx playwright test
   displayName: 'npm install and build'
+
+- script: |
+    npx playwright test
+  displayName: 'execute tests'
