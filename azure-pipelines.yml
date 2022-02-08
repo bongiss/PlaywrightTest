@@ -23,3 +23,15 @@ steps:
 - script: |
     npx playwright test --worker 2
   displayName: 'execute tests'
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit' 
+    testResultsFiles: 'report.xml' 
+    #searchFolder: '$(System.DefaultWorkingDirectory)' # Optional
+    #mergeTestResults: false # Optional
+    failTaskOnFailedTests: false
+    testRunTitle: 'Playwright on Azure Devops'
+    #buildPlatform: # Optional
+    #buildConfiguration: # Optional
+    #publishRunAttachments: true # Optional
