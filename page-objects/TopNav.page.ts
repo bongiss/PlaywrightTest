@@ -1,5 +1,5 @@
 import { Page } from '@playwright/test';
-import { createSelector, Selector } from '../Helper-package/src';
+import { createSelector, Selector } from '../helper-package/src';
 
 export class TopNav {
     private _contact = this._select('a[href="#/contact"]');
