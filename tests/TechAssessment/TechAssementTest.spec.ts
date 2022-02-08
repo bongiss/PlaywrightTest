@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { CheckoutPage } from "../../page-objects/CheckoutPage.page";
-import { ContactPage } from "../../page-objects/ContactPAge.page";
+import { ContactPage } from "../../page-objects/ContactPage.page";
 import { ShopPage } from "../../page-objects/ShopPage.page";
 import { TopNav } from "../../page-objects/TopNav.page";
 import { UrlActions } from "../../test-helpers/UrlAction.page";
