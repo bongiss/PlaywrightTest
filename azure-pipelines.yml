@@ -21,7 +21,7 @@ steps:
   displayName: 'npm install and build'
 
 - script: |
-    npx playwright test --workers 8
+    npx playwright test --workers 8 || true
   displayName: 'execute tests'
 
 - task: PublishTestResults@2
