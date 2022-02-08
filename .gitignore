@@ -5,3 +5,4 @@ junit.xml
 report.json
 report.xml
 screenshot.png
+azure-pipelines.yml
