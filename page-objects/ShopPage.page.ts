@@ -1,5 +1,5 @@
 import { expect, Page } from '@playwright/test';
-import { createSelector, Selector } from '../helper-package/src';
+import { createSelector, Selector } from '../Helper-package/src';
 
 export class ShopPage {
     
