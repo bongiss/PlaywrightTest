@@ -21,7 +21,8 @@ test.describe.parallel('Technical Assessment Automation', () => {
         
         //error text/messages validation
         expect(await contactPage.errorHeaderMessage()).toContain('but we won\'t get it unless you complete the form correctly.');
-        expect(await contactPage.forenameErrIsDisplayed()).toEqual(true);
+        // expect(await contactPage.forenameErrIsDisplayed()).toEqual(true);
+        expect(await contactPage.forenameErrIsDisplayed()).toEqual(false);
         expect(await contactPage.forenameErrorText()).toContain('Forename is required');
         expect(await contactPage.emailErrIsDisplayed()).toEqual(true);
         expect(await contactPage.emailErrText()).toContain('Email is required');
