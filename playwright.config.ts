@@ -5,7 +5,7 @@ const config: PlaywrightTestConfig = {
 
   timeout: 90000,
   retries: 1,
-  workers: process.env.CI ? 2 : undefined,
+  workers: 8,
 
   testDir: "./tests",
 
