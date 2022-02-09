@@ -21,11 +21,8 @@ steps:
   displayName: 'npm install and build'
 
 - script: |
-    CI = npx playwright test --workers 8
-    uses: actions/upload-artifact@v2
-    if: always()
-    with:
-      path: test-results
+    npx playwright test --workers 8
+  continueOnError: true
   displayName: 'execute tests'
 
 - task: PublishTestResults@2
