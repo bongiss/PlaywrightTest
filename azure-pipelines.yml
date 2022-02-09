@@ -35,4 +35,4 @@ steps:
     testRunTitle: 'Playwright on Azure Devops'
     #buildPlatform: # Optional
     #buildConfiguration: # Optional
-    #publishRunAttachments: true # Optional
+    publishRunAttachments: true
