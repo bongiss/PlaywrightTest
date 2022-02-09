@@ -30,7 +30,7 @@ steps:
     testResultsFiles: 'report.xml' 
     #searchFolder: '$(System.DefaultWorkingDirectory)' # Optional
     #mergeTestResults: false # Optional
-    failTaskOnFailedTests: false
+    failTaskOnFailedTests: true
     testRunTitle: 'Playwright on Azure Devops'
     #buildPlatform: # Optional
     #buildConfiguration: # Optional
