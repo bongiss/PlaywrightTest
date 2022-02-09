@@ -10,7 +10,7 @@ const config: PlaywrightTestConfig = {
   testDir: "./tests",
 
   reporter: [
-    ['list'],
+    ['dot'],
     ['junit', {outputFile: 'report.xml'}],
     ['json', {outputFile: 'report.json'}]
   ],             
