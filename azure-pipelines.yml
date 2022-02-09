@@ -22,6 +22,7 @@ steps:
 
 - script: |
     npx playwright test --workers 8
+  continueOnError: true
   displayName: 'execute tests'
 
 - task: PublishTestResults@2
@@ -30,8 +31,8 @@ steps:
     testResultsFiles: 'report.xml' 
     #searchFolder: '$(System.DefaultWorkingDirectory)' # Optional
     #mergeTestResults: false # Optional
-    failTaskOnFailedTests: false
+    failTaskOnFailedTests: true
     testRunTitle: 'Playwright on Azure Devops'
     #buildPlatform: # Optional
     #buildConfiguration: # Optional
-    #publishRunAttachments: true # Optional
+    publishRunAttachments: true
