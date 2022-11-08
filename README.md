@@ -1,16 +1,15 @@
 how to use:
 
-1. install and setup `NodeJs` on your machine -- `https://nodejs.org/en/download/`
-2. run `npm i -D @playwright/test`
-3. install test browsers `npx playwright install`
-4. to run tests `npx playwright test`
-5. if module error occurs, kindly delete the module folder and start from step 2.
+from scratch:
+1. `npm init` to initialise package.json
+2. `npm i playwright` to have dependency installed and updated package.json
+3. to create playwright devDependencies do:
+   `npm init playwright@latest` # Run from your project's root directory
+   `npm init playwright@latest new-project` # Or create a new project
 
-extras for the experts:
-1. to have a headles run, change the configuration file `playwright.config.ts` headless : true
-2. I take advantage of the parallel run in playwright. if you wish to disable this, kindly remove `.parallel` in the test.describe
-3. Playwright can run different browsers at once --firefox, webkit(safari), mobile etc., please help yourself to play around with it.
-4. to use debug mode using PW's inspector tool, add `--debug` in cli run test command.
-5. Videos and screenshots are recorded during the time of execution. change this option in config file if you want to have them only during failures.
-6. Videos and Screenshots are saved under `..\test-results\`
-7. Number of retries for test failures can also be changed in the config file at `retries` field.
+
+execution
+`npx playwright test landing-page.spec.ts --headed`
+`npx playwright test landing-page.ts --project=chromium`
+`npx playwright test --debug`
+

@@ -1,38 +1,70 @@
-# Node.js
-# Build a general Node.js project with npm.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
-- master
+- none
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: windows-latest
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '12.x'
-  displayName: 'Install Node.js'
+#variables:
+#  SELENIUM_HEADLESS: false
+#  SELENIUM_GRID_URL: ''
+#  SELENIUM_BROWSER: 'Chrome'
+#  SELENIUM_WAIT: 30
+#  SELENIUM_URL: 'https://jupiter2.cloud.planittesting.com/#/'
 
-- script: |
-    npm i -D @playwright/test
-    npx playwright install
-  displayName: 'npm install and build'
+jobs:
+- job: setup
+  condition: always()
+  steps:
+  - task: NodeTool@0
+    displayName: install node 12.x
+    inputs:
+      versionSpec: '12.x'
 
-- script: |
-    npx playwright test --workers 8
-  continueOnError: true
-  displayName: 'execute tests'
+- job: runTests
+  condition: always()
+  dependsOn: setup
+  steps:
 
-- task: PublishTestResults@2
-  inputs:
-    testResultsFormat: 'JUnit' 
-    testResultsFiles: 'report.xml' 
-    #searchFolder: '$(System.DefaultWorkingDirectory)' # Optional
-    #mergeTestResults: false # Optional
-    failTaskOnFailedTests: true
-    testRunTitle: 'Playwright on Azure Devops'
-    #buildPlatform: # Optional
-    #buildConfiguration: # Optional
-    publishRunAttachments: true
+  - task: CmdLine@2
+    displayName: npm install
+    inputs:
+      script: npm install -D @playwright/test
+
+  - task: CmdLine@2
+    displayName: npm build
+    inputs:
+      script: npx playwright install
+
+  - task: CmdLine@2
+    displayName: executing tests
+    inputs:
+      script: npx playwright test --workers 8 || true
+
+  - task: PublishTestResults@2
+    displayName: test results
+    inputs:
+      testResultsFormat: 'JUnit' 
+      testResultsFiles: 'report.xml' 
+      #searchFolder: '$(System.DefaultWorkingDirectory)' # Optional
+      #mergeTestResults: false # Optional
+      failTaskOnFailedTests: false
+      testRunTitle: 'Playwright on Azure Devops'
+      #buildPlatform: # Optional
+      #buildConfiguration: # Optional
+      publishRunAttachments: true
+      
+  - task: PublishBuildArtifacts@1
+    condition: failed()
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      ArtifactName: 'FailureScreenshots'
+      publishLocation: 'Container'
+
+- job: end
+  condition: always()
+  displayName: end
+  dependsOn:
+    - setup
+    - runTests
+
