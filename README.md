@@ -13,3 +13,5 @@ execution
 `npx playwright test landing-page.ts --project=chromium`
 `npx playwright test --debug`
 
+when pulling from git *package.json exists*
+`npm install`
