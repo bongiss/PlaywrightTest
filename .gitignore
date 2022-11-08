@@ -21,4 +21,4 @@ azure-pipelines.yml
 /test-results/
 /playwright-report/
 /playwright/.cache/
-package-lock.json
+./package-lock.json
