@@ -5,7 +5,7 @@ import { ShopPage } from "../../page-objects/ShopPage.page";
 import { TopNav } from "../../page-objects/TopNav.page";
 import { UrlActions } from "../../test-helpers/UrlAction.page";
 
-test.describe.parallel('Technical Assessment Automation', () => {
+test.describe('Technical Assessment Automation', () => {
     
     test.beforeEach(async ({ page }) => {
         const urlActions = new UrlActions(page);
@@ -21,21 +21,22 @@ test.describe.parallel('Technical Assessment Automation', () => {
         
         //error text/messages validation
         expect(await contactPage.errorHeaderMessage()).toContain('but we won\'t get it unless you complete the form correctly.');
-        expect(await contactPage.forenameErrIsDisplayed()).toEqual(true);
+        // expect(await contactPage.forenameErrIsDisplayed()).toEqual(true);
+        expect(await contactPage.forenameErrIsDisplayed()).toBe(false); //force fail
         expect(await contactPage.forenameErrorText()).toContain('Forename is required');
-        expect(await contactPage.emailErrIsDisplayed()).toEqual(true);
+        expect(await contactPage.emailErrIsDisplayed()).toBe(true);
         expect(await contactPage.emailErrText()).toContain('Email is required');
-        expect(await contactPage.inputMessageErrDisplayed()).toEqual(true);
+        expect(await contactPage.inputMessageErrDisplayed()).toBe(true);
         expect(await contactPage.inputMessageErrText()).toContain('Message is required');
 
         await contactPage.enterForname('John');
         await contactPage.enterSurname('Example');
-        await contactPage.enterEmail('John.Example@planit.net.au');
+        await contactPage.enterEmail('John.Example@gmail.com');
         await contactPage.enterTelephone('02112345678');
         await contactPage.enterMessage('Hello world');
         await contactPage.clickSubmit();
 
-        expect(await contactPage.feedbackSuccessMessageDisplayed()).toEqual(true);
+        expect(await contactPage.feedbackSuccessMessageDisplayed()).toBe(true);
         expect(await contactPage.feedbackSuccessMessageText()).toContain('we appreciate your feedback.');
 
     });
@@ -47,12 +48,12 @@ test.describe.parallel('Technical Assessment Automation', () => {
             await topNav.clickContact();
             await contactPage.enterForname('John');
             await contactPage.enterSurname('Example');
-            await contactPage.enterEmail('John.Example@planit.net.au');
+            await contactPage.enterEmail('John.Example@gmail.com');
             await contactPage.enterTelephone('02112345678');
             await contactPage.enterMessage('Hello world');
             await contactPage.clickSubmit();
     
-            expect(await contactPage.feedbackSuccessMessageDisplayed()).toEqual(true);
+            expect(await contactPage.feedbackSuccessMessageDisplayed()).toBe(true);
             expect(await contactPage.feedbackSuccessMessageText()).toContain('we appreciate your feedback.');
         });
     }
@@ -66,8 +67,8 @@ test.describe.parallel('Technical Assessment Automation', () => {
         await shopPage.clickBuyButton('Funny Cow');
         await shopPage.clickBuyButton('Fluffy Bunny');
         await topNav.clickCart();
-        expect(await checkoutPage.verifyItemInCart('Funny Cow')).toEqual(true);
-        expect(await checkoutPage.verifyItemInCart('Fluffy Bunny')).toEqual(true);
+        expect(await checkoutPage.verifyItemInCart('Funny Cow')).toBe(true);
+        expect(await checkoutPage.verifyItemInCart('Fluffy Bunny')).toBe(true);
     });
     test('Test Case 4', async ({ page }) => {
         const topNav = new TopNav(page);
@@ -86,15 +87,15 @@ test.describe.parallel('Technical Assessment Automation', () => {
         await shopPage.clickBuyButton('Valentine Bear');
         await shopPage.clickBuyButton('Valentine Bear');
         await topNav.clickCart();
-        expect(await checkoutPage.verifyItemInCart('Stuffed Frog')).toEqual(true);
-        expect(await checkoutPage.verifyItemInCart('Fluffy Bunny')).toEqual(true);
-        expect(await checkoutPage.verifyItemInCart('Valentine Bear')).toEqual(true);
+        expect(await checkoutPage.verifyItemInCart('Stuffed Frog')).toBe(true);
+        expect(await checkoutPage.verifyItemInCart('Fluffy Bunny')).toBe(true);
+        expect(await checkoutPage.verifyItemInCart('Valentine Bear')).toBe(true);
 
-        expect(await checkoutPage.verifyItemPrice('Stuffed Frog','10.99')).toEqual(true);
-        expect(await checkoutPage.verifyItemPrice('Fluffy Bunny','9.99')).toEqual(true);
-        expect(await checkoutPage.verifyItemPrice('Valentine Bear','14.99')).toEqual(true);
+        expect(await checkoutPage.verifyItemPrice('Stuffed Frog','10.99')).toBe(true);
+        expect(await checkoutPage.verifyItemPrice('Fluffy Bunny','9.99')).toBe(true);
+        expect(await checkoutPage.verifyItemPrice('Valentine Bear','14.99')).toBe(true);
 
-        expect(await checkoutPage.verifyItemsSubtotal()).toEqual(true);
-        expect(await checkoutPage.verifyTotalAmount()).toEqual(true);
+        expect(await checkoutPage.verifyItemsSubtotal()).toBe(true);
+        expect(await checkoutPage.verifyTotalAmount()).toBe(true);
     });
 });
