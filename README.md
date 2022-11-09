@@ -9,8 +9,8 @@ from scratch:
 
 
 execution
-`npx playwright test landing-page.spec.ts --headed`
-`npx playwright test landing-page.ts --project=chromium`
+`npx playwright test --headed`
+`npx playwright test --project=chromium`
 `npx playwright test --debug`
 
 when pulling from git *package.json exists*

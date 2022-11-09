@@ -21,6 +21,8 @@ export class CheckoutPage {
                 break;
             }
         }
+
+        return false;
         
     }
 
@@ -36,6 +38,8 @@ export class CheckoutPage {
                 }
             }
         }
+
+        return false;
         
     }
 
